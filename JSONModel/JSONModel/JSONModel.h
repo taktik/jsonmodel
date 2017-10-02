@@ -71,7 +71,7 @@ DEPRECATED_ATTRIBUTE
  * @param dict a dictionary holding JSON objects, to be imported in the model.
  * @param err an error or NULL
  */
-- (instancetype)initWithDictionary:(NSDictionary *)dict error:(NSError **)err;
+- (instancetype)initWithDictionary:(NSDictionary *)dict error:(NSError * __autoreleasing *)err;
 
 
 /**
@@ -191,12 +191,12 @@ DEPRECATED_ATTRIBUTE
  * @exception JSONModelInvalidDataException thrown when the input data does not include all required keys
  * @see arrayOfDictionariesFromModels:
  */
-+ (NSMutableArray *)arrayOfModelsFromDictionaries:(NSArray *)array error:(NSError **)err;
-+ (NSMutableArray *)arrayOfModelsFromData:(NSData *)data error:(NSError **)err;
-+ (NSMutableArray *)arrayOfModelsFromString:(NSString *)string error:(NSError **)err;
-+ (NSMutableDictionary *)dictionaryOfModelsFromDictionary:(NSDictionary *)dictionary error:(NSError **)err;
-+ (NSMutableDictionary *)dictionaryOfModelsFromData:(NSData *)data error:(NSError **)err;
-+ (NSMutableDictionary *)dictionaryOfModelsFromString:(NSString *)string error:(NSError **)err;
++ (NSMutableArray *)arrayOfModelsFromDictionaries:(NSArray *)array error:(NSError * __autoreleasing *)err;
++ (NSMutableArray *)arrayOfModelsFromData:(NSData *)data error:(NSError * __autoreleasing *)err;
++ (NSMutableArray *)arrayOfModelsFromString:(NSString *)string error:(NSError * __autoreleasing *)err;
++ (NSMutableDictionary *)dictionaryOfModelsFromDictionary:(NSDictionary *)dictionary error:(NSError * __autoreleasing *)err;
++ (NSMutableDictionary *)dictionaryOfModelsFromData:(NSData *)data error:(NSError * __autoreleasing *)err;
++ (NSMutableDictionary *)dictionaryOfModelsFromString:(NSString *)string error:(NSError * __autoreleasing *)err;
 
 /**
  * If you have an NSArray of data model objects, this method takes it in and outputs a list of the
