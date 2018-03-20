@@ -358,7 +358,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
                 //initialize the property's model, store it
                 JSONModelError* initErr = nil;
-                id value = [[property.type alloc] initWithDictionary: jsonValue error:&initErr];
+                id value = [[((jsonValue[@"$type"]?NSClassFromString([@"SWG" stringByAppendingString:jsonValue[@"$type"]]):property.type)?:property.type) alloc] initWithDictionary: jsonValue error:&initErr];
 
                 if (!value) {
                     //skip this property, continue with next property
