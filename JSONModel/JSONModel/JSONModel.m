@@ -358,8 +358,14 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
                 //initialize the property's model, store it
                 JSONModelError* initErr = nil;
-                id value = [[((jsonValue[@"$type"]?NSClassFromString([@"SWG" stringByAppendingString:jsonValue[@"$type"]]):property.type)?:property.type) alloc] initWithDictionary: jsonValue error:&initErr];
-
+                
+                id value = nil;
+                
+                @try {
+                    value = [[((jsonValue[@"$type"]?NSClassFromString([@"SWG" stringByAppendingString:jsonValue[@"$type"]]):property.type)?:property.type) alloc] initWithDictionary: jsonValue error:&initErr];
+                } @catch (NSException * e) {
+                    JMLog(@"Malformed object: %@", jsonValue);
+                }
                 if (!value) {
                     //skip this property, continue with next property
                     if (property.isOptional || !validation) continue;
