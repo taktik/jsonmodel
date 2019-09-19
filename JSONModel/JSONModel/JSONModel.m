@@ -971,7 +971,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         }
 
         //check if the property is another model
-        if ([value isKindOfClass:JSONModelClass]) {
+        if ([value isKindOfClass:JSONModelClass]||[value isKindOfClass:[NSDictionary class]]) {
 
             //recurse models
             value = [(JSONModel*)value toDictionary];
