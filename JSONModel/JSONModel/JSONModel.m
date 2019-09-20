@@ -971,7 +971,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         }
 
         //check if the property is another model
-        if ([value isKindOfClass:JSONModelClass]||[value isKindOfClass:[NSDictionary class]]) {
+        if ([value isKindOfClass:JSONModelClass] || [value isKindOfClass:[NSDictionary class]]) {
 
             //recurse models
             value = [(JSONModel*)value toDictionary];
@@ -988,7 +988,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
             }
 
             // 2) check for standard types OR 2.1) primitives
-            if (p.structName==nil && (p.isStandardJSONType || p.type==nil)) {
+            if (p.structName==nil && (p.isStandardJSONType || p.type==nil) || [value isKindOfClass:[NSString class]] || [value isKindOfClass:[NSNumber class]]) {
 
                 //generic get value
                 [tempDictionary setValue:value forKeyPath: keyPath];
